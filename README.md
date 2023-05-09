@@ -20,8 +20,8 @@ any other existing trajectory format.
 
 * **MDAnlaysis**: It is an open source Python library that helps you to quickly write your own analysis algorithm for studying trajectories produced by the most     popular simulation packages. To install the lastest stable release with conda do:
 
-```sh
-conda config --add channels conda-forge
-conda install mdanalysis
-```
+  ```sh
+  conda config --add channels conda-forge
+  conda install mdanalysis
+  ```
  
