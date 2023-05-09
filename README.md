@@ -1,4 +1,4 @@
-# Introduction
+# 1- Introduction
 This tool allows to make conversion between trajectories and/or to reduce the total number of frames of the trajectory itself.
 
 In particular, it could be very useful to trasform from .lammpstrj format to .xtc one. The reason lies in the fact that 
@@ -11,7 +11,7 @@ any other existing trajectory format.
 
 <br />
 
-# Requirements
+# 2- Requirements
 
 * **`Python3`**: it is an interpreted, object-oriented, high-level programming language with dynamic semantics. 
   The installation guide is provided [Here](https://docs.python-guide.org/starting/installation/). 
@@ -36,7 +36,7 @@ any other existing trajectory format.
    
 <br />
 
-# Usage 
+# 3- Usage 
  
 The typical usage of the program consists in a call to _trajectories-conversion.py_ code by using Python3. 
 This code has the scope of converting trajectories between any format to xtc one. In particular, it could be very useful 
@@ -64,10 +64,111 @@ python3 trajectories-conversion.py -r <Coordinate FILE> -t <Trajectory FILE> [-a
 python3 trajectories-conversion.py --ref <Coordinate FILE> --traj <Trajectory FILE> [--atoms <SelectAtoms>] [--step <step>] 
 ```
 
+The output of the program is the new trajectory in format xtc (and with a reduces number of frames if -s/--step [INT] is set). For further information, please type on terminal `python3 trajectories-conversion.py` or `python3 trajectories-conversion.py -h`. 
+
 Before running the python scripts, read carefully the next section that provides a detailed explaination of each argument.
 
 <br />
 
-## Arguments 
+# 4- Arguments 
 
-As shown in **Sec. XX** the coordinate/topology file of all-atom structure of the biomolecule (_`gro, pdb, xyz,...`_) and the trajectory file that requires a format conversion and/or reduction of frames, are always mandatory. Moreover, the string specifying which atoms of trajectory will be token in account (_`SelectAtoms`_), and the the number correspodning at how often the trajectory will be read (_`Step`_) are optional. A short explaination of the above mentioned files is the following:
+As shown in **Sec. 3** the coordinate/topology file of all-atom structure of the biomolecule (_`gro, pdb, xyz,...`_) and the trajectory file that requires a format conversion and/or reduction of frames, are always mandatory. Moreover, the string specifying which atoms of trajectory will be token in account (_`SelectAtoms`_), and the the number corresponding at how often the trajectory will be read (_`Step`_) are optional. A short explaination of the above mentioned files is the following:
+
+* **`Coordinate FILE`**: Mandatory File of atom Coordinates (xyz, gro, pdb, psf, ..., formats are accepted). 
+
+* **`Trajectory FILE`**: Mandatory File containing the trajectory of the biomolecule (trr, dcd, lammpstrj,..., formats are accepted.)
+
+* **`SelectAtoms`**: Optional string that specifies the atoms of trajectory that will be converted from any format to xtc. The default value is 'all' [-a/--atoms all] that means that all the atoms will be token in account. Another choice could be -a 'name CA' where only the C-alpha atoms will be considered. Be careful, because if the string is made up of more than one word separated by spaces the latter must be written between apex. 
+Example: 
+  * -a name CA   --> IT DOES NOT WORK (*name CA* has two words: it requires apex)
+  * -a 'name CA' --> IT WORKS
+  * -a 'all'     --> IT WORKS
+  * -a all       --> IT WORKS (*all* has one word: not require apex)
+The complete list of possible string can be found in [MDAnalysis documentation](https://docs.mdanalysis.org/stable/documentation_pages/selections.html)
+
+* **`Step`**: Optional integer number whose scope is to reduce the number of frames of input trajectory. The default value is **1**, that is all frames are read. On the other hand, if an integer number _X_ between 1 and the total number of frames is set, than the trajectory is read every _X_ frames.
+
+
+<br />
+
+# 5- Examples 
+
+Hereafter, for the sake of clarity, six examples are reported. Read them carefully. 
+
+```perl
+# *Example 1* : Transforming lammpstrj trajectory in xtc (all frames and all atoms are read)
+#
+#             o input_trajectory  =  protein.lammpstrj 
+#             o coordinate_file   =  protein.gro
+#             o frames_read       =  all (default value, thus it does not require -s/--step <INT> flag)
+#             o atoms selected    =  all (default value, thus it does not require -a/--atoms <STR> flag) 
+#             o output_trajectory =  Trajectory.xtc   
+
+python3 trajectories-conversion.py -r protein.gro -t protein.lammpstrj 
+```
+  
+```perl
+# *Example 2* : Transforming dcd trajectory in xtc (all frames and all atoms are read) 
+#
+#             o input_trajectory  =  protein.dcd
+#             o coordinate_file   =  protein.pdb
+#             o frames_read       =  all (default value, thus it does not require -s/--step <INT> flag)
+#             o atoms selected    =  all (default value, thus it does not require -a/--atoms <STR> flag) 
+#             o output_trajectory =  Trajectory.xtc   
+
+python3 trajectories-conversion.py -r protein.pdb -t protein.dcd
+```
+  
+```perl
+# *Example 3* : Transforming lammpstrj trajectory in xtc (all frames are read, whereas only C-alpha atoms and hydrogens are token in account)
+#  
+#             o input_trajectory  =  protein.lammpstrj 
+#             o coordinate_file   =  protein.gro
+#             o frames_read       =  all (default value, thus it does not require -s/--step <INT> flag)
+#             o atoms selected    =  only C-alpha atoms and hydrogens (it requires -a/--atoms 'name CA and type H' flag) 
+#             o output_trajectory =  Trajectory.xtc   
+
+python3 trajectories-conversion.py -r protein.gro -t protein.lammpstrj -a 'name CA and type H'
+```
+
+  
+```perl
+# *Example 4* : Transforming lammpstrj trajectory in xtc (the trajectory will be read every 10 frames, whereas all atoms are token in account) 
+#
+#             o input_trajectory  =  protein.lammpstrj 
+#             o  coordinate_file  =  protein.gro
+#             o  frames_read      =  every 10 (thus it requires -s/--step 10 flag)
+#             o  atoms selected   =  all (default value, thus it does not requires -a/--atoms <STR> flag) 
+#             o output_trajectory =  Trajectory.xtc   
+
+python3 trajectories-conversion.py -r protein.gro -t protein.lammpstrj -s 10 
+```
+  
+```perl
+# *Example 5* : Transforming lammpstrj trajectory in xtc (the trajectory will be read every 20 frames, whereas only hydrogen atoms are token in account) 
+#
+#             o input_trajectory  =  protein.lammpstrj 
+#             o coordinate_file   =  protein.gro
+#             o frames_read       =  every 20 (thus it requires -s/--step 20 flag)
+#             o atoms selected    =  only hydrogens (thus it requires -a/--atoms 'type H' flag) 
+#             o output_trajectory =  Trajectory.xtc   
+
+python3 trajectories-conversion.py -r protein.gro -t protein.lammpstrj -s 10 -a 'type H' 
+```
+  
+```perl
+# *Example 6* : Trasforming xtc trajectory reading it every 50 frames (all atoms are token in account) 
+#
+#             o input_trajectory  =  protein.xtc
+#             o coordinate_file   =  protein.gro
+#             o frames_read       =  every 50 (thus it requires -s/--step 20 flag)
+#             o atoms selected    =  all (default value, thus it does not requires -a/--atoms <STR> flag)
+#             o output_trajectory =  Trajectory.xtc   
+
+python3 trajectories-conversion.py -r protein.gro -t protein.xtc -s 50 
+```
+  
+# 6 - Contacts 
+
+Raffaele (Elio) Fiorentini: elio.fiorentini90@gmail.it
+
