@@ -10,7 +10,7 @@ and any other molecular visualization program. Moreover, and more important, the
 any other existing trajectory format. 
 
 
-# Requirement
+# Requirements
 
 * **`Python3`**: it is an interpreted, object-oriented, high-level programming language with dynamic semantics. 
   The installation guide is provided [Here](https://docs.python-guide.org/starting/installation/). 
@@ -20,7 +20,7 @@ any other existing trajectory format.
 
 * **`MDAnalysis`**: It is an open source Python library that helps you to quickly write your own analysis algorithm for studying trajectories produced by the most popular simulation packages. To install the lastest stable release with conda do:
 
-   ```sh
+   ```bash
    conda config --add channels conda-forge
    conda install mdanalysis
    ```
