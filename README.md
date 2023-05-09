@@ -27,6 +27,6 @@ any other existing trajectory format.
    
    On the other hand, to install the latest stable release with pip or pip3 (which should be available in all Python installations) do:
 
-   ```
+   ```awk
    pip3 install --upgrade MDAnalysis
    ```
