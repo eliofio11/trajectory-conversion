@@ -31,4 +31,4 @@ any other existing trajectory format.
    pip3 install --upgrade MDAnalysis
    ```
    
-   Any other information can be found [Here](https://www.mdanalysis.org/pages/installation_quick_start/)
+   Any other information can be found [Here](https://www.mdanalysis.org/pages/installation_quick_start/).
