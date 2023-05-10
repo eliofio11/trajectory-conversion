@@ -1,13 +1,19 @@
-# 1- Introduction
-This tool allows to make conversion between trajectories and/or to reduce the total number of frames of the trajectory itself.
+# 1- Introduction 
 
-In particular, it could be very useful to trasform from .lammpstrj format to .xtc one. The reason lies in the fact that 
-an XTC file, is a compressed trajectory format used by the GROMACS molecular dynamics package, about 8 times _lighther_ than LAMMPSTRJ one. 
+Simulations of biomolecules that last hundreds of nanoseconds are required to produce trajectories that can be analyzed later. In particular, the LAMMPS simulation package generates trajectories in the _.lammpstrj_ format, which are generally quite large (in some cases, tens of gigabytes are possible). In order to free up storage space, there are two possible approaches:
 
-If using this code correctly, starting from LAMMPSTRJ trajectory, the program returns in output the same trajectory in XTC format.
-Other starting trajectory format are feasible, whereas the output trajectory format is always XTC because is easily read by VMD, Chimera, 
-and any other molecular visualization program. Moreover, and more important, the XTC format has a compressed format and _lighther_ than 
-any other existing trajectory format. 
+1. reducing the total number of frames by reading the trajectory every N frames; 
+2. converting the trajectory to the .xtc format, a compressed format that is typically used by the GROMACS molecular dynamics package and is about 8 times lighter than the LAMMPSTRJ format.
+
+However, no tool currently available allows for the manipulation of _.lammptrj_ trajectories without the support of other software packages such as VMD and GROMACS. Indeed, the former reads this format, can also reduce the total number of frames; however, it saves trajectories in _.trr_ format. Finally, the conversion from _.trr_ to _.xtc_ is possible with GROMACS. It is clear that the entire process is easy but cumbersome, as it requires two softwares. 
+
+
+**This tool makes it easy to convert between trajectories and/or reduce the total number of frames in the trajectory.**
+
+When used correctly, the program outputs the same trajectory in XTC format, regardless of the input format. The _.lammpstrj_ format is one of the best choices for input trajectory because of its large size: indeed, the conversion in XTC format reduces noticeably its size. The XTC format has at least two advantages over other formats:
+
+* It is easily read by VMD, Chimera, and other molecular visualization programs; 
+* The XTC format is compressed and lighter than any other existing trajectory format.
 
 <br />
 
