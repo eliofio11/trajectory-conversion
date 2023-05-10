@@ -44,9 +44,9 @@ When used correctly, the program outputs the same trajectory in XTC format, rega
 
 # 3- Usage 
  
-The typical usage of the program consists in a call to _trajectories-conversion.py_ code by using Python3. 
-This code has the scope of converting trajectories between any format to xtc one. In particular, it could be very useful 
-to transform LAMMPSTRJ format to XTC because the latter is about 8 times _slighter_ than the former. Moreover, 
+The typical usage of the program consists in a call to _trajectory-conversion.py_ code by using Python3. 
+This code has the scope of converting a trajectory between any format to xtc one. In particular, it could be very useful 
+to transform _LAMMPSTRJ_ format to _XTC_ because the latter is about 8 times _slighter_ than the former. Moreover, 
 this code has a second purpose of reducing the number of frames of the input trajectory. 
 
 This script requires two mandatory files: the coordinates file or the topology of all-atom structure of the biomolecule (_`gro, pdb, xyz,...`_) and the trajectory file in any format (_`lammpstrj, dcd, trr, ...`_) On the other hand, two arguments are optional: 
@@ -60,17 +60,17 @@ This script requires two mandatory files: the coordinates file or the topology o
 The dafult value is 1, that is **all** the frames are read. On the other hand, if an integer number _X_ between 1 and the total number of frames
 is set, the input trajectory is read every _X_ steps. 
 
-In order to launch the **trajectories-conversion.py** scripts, the command-line is the following:
+In order to launch the **trajectory-conversion.py** scripts, the command-line is the following:
 
 ```sh
-python3 trajectories-conversion.py -r <Coordinate FILE> -t <Trajectory FILE> [-a <SelectAtoms>] [-s <step>] 
+python3 trajectory-conversion.py -r <Coordinate FILE> -t <Trajectory FILE> [-a <SelectAtoms>] [-s <step>] 
 
    or:
 
-python3 trajectories-conversion.py --ref <Coordinate FILE> --traj <Trajectory FILE> [--atoms <SelectAtoms>] [--step <step>] 
+python3 trajectory-conversion.py --ref <Coordinate FILE> --traj <Trajectory FILE> [--atoms <SelectAtoms>] [--step <step>] 
 ```
 
-The output of the program is the new trajectory in format xtc (and with a reduces number of frames if -s/--step [INT] is set). For further information, please type on terminal `python3 trajectories-conversion.py` or `python3 trajectories-conversion.py -h`. 
+The output of the program is the new trajectory in format xtc (and with a reduces number of frames if -s/--step [INT] is set). For further information, please type on terminal `python3 trajectory-conversion.py` or `python3 trajectory-conversion.py -h`. 
 
 Before running the python scripts, read carefully the next section that provides a detailed explaination of each argument.
 
@@ -110,7 +110,7 @@ Hereafter, for the sake of clarity, six examples are reported. Read them careful
 #             o atoms selected    =  all (default value, thus it does not require -a/--atoms <STR> flag) 
 #             o output_trajectory =  Trajectory.xtc   
 
-python3 trajectories-conversion.py -r protein.gro -t protein.lammpstrj 
+python3 trajectory-conversion.py -r protein.gro -t protein.lammpstrj 
 ```
   
 ```perl
@@ -122,7 +122,7 @@ python3 trajectories-conversion.py -r protein.gro -t protein.lammpstrj
 #             o atoms selected    =  all (default value, thus it does not require -a/--atoms <STR> flag) 
 #             o output_trajectory =  Trajectory.xtc   
 
-python3 trajectories-conversion.py -r protein.pdb -t protein.dcd
+python3 trajectory-conversion.py -r protein.pdb -t protein.dcd
 ```
   
 ```perl
@@ -134,7 +134,7 @@ python3 trajectories-conversion.py -r protein.pdb -t protein.dcd
 #             o atoms selected    =  only C-alpha atoms and hydrogens (it requires -a/--atoms 'name CA and type H' flag) 
 #             o output_trajectory =  Trajectory.xtc   
 
-python3 trajectories-conversion.py -r protein.gro -t protein.lammpstrj -a 'name CA and type H'
+python3 trajectory-conversion.py -r protein.gro -t protein.lammpstrj -a 'name CA and type H'
 ```
 
   
@@ -147,7 +147,7 @@ python3 trajectories-conversion.py -r protein.gro -t protein.lammpstrj -a 'name 
 #             o  atoms selected   =  all (default value, thus it does not requires -a/--atoms <STR> flag) 
 #             o output_trajectory =  Trajectory.xtc   
 
-python3 trajectories-conversion.py -r protein.gro -t protein.lammpstrj -s 10 
+python3 trajectory-conversion.py -r protein.gro -t protein.lammpstrj -s 10 
 ```
   
 ```perl
@@ -159,7 +159,7 @@ python3 trajectories-conversion.py -r protein.gro -t protein.lammpstrj -s 10
 #             o atoms selected    =  only hydrogens (thus it requires -a/--atoms 'type H' flag) 
 #             o output_trajectory =  Trajectory.xtc   
 
-python3 trajectories-conversion.py -r protein.gro -t protein.lammpstrj -s 10 -a 'type H' 
+python3 trajectory-conversion.py -r protein.gro -t protein.lammpstrj -s 10 -a 'type H' 
 ```
   
 ```perl
@@ -171,7 +171,7 @@ python3 trajectories-conversion.py -r protein.gro -t protein.lammpstrj -s 10 -a 
 #             o atoms selected    =  all (default value, thus it does not requires -a/--atoms <STR> flag)
 #             o output_trajectory =  Trajectory.xtc   
 
-python3 trajectories-conversion.py -r protein.gro -t protein.xtc -s 50 
+python3 trajectory-conversion.py -r protein.gro -t protein.xtc -s 50 
 ```
   
 # 6 - Contacts 
