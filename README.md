@@ -173,7 +173,9 @@ python3 trajectory-conversion.py -r protein.gro -t protein.lammpstrj -s 10 -a 't
 
 python3 trajectory-conversion.py -r protein.gro -t protein.xtc -s 50 
 ```
-  
+
+<br />
+
 # 6 - Contacts 
 
 Raffaele (Elio) Fiorentini: elio.fiorentini90@gmail.it
