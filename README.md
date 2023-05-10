@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="traj-conv-logo.jpg" alt="Scheme" width="950">
+<img src="traj-conversion-logo.jpg" alt="Scheme" width="950">
 </div>
 
 # 1- Introduction 
