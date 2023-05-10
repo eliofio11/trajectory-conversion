@@ -1,3 +1,8 @@
+<div align="center">
+
+<img src="traj-conv-logo.jpg" alt="Scheme" width="950">
+</div>
+
 # 1- Introduction 
 
 Simulations of biomolecules that last hundreds of nanoseconds are required to produce trajectories that can be analyzed later. In particular, the LAMMPS simulation package generates trajectories in the _.lammpstrj_ format, which are generally quite large (in some cases, tens of gigabytes are possible). In order to free up storage space, there are two possible approaches:
