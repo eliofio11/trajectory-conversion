@@ -5,48 +5,51 @@
 
 # 1- Introduction 
 
-Simulations of biomolecules that last hundreds of nanoseconds are required to produce trajectories that can be analyzed later. In particular, the LAMMPS simulation package generates trajectories in the _.lammpstrj_ format, which are generally quite large (in some cases, tens of gigabytes are possible). In order to free up storage space, there are two possible approaches:
+<p align="justify"> To analyze biomolecular simulations effectively, it is necessary to generate trajectories lasting hundreds of nanoseconds. The widely used LAMMPS simulation package produces trajectories in the <i>.lammpstrj</i> format, which can be quite large, sometimes reaching tens of gigabytes. To conserve storage space, there are two potential approaches: </p>
 
-1. reducing the total number of frames by reading the trajectory every N frames; 
-2. converting the trajectory to the .xtc format, a compressed format that is typically used by the GROMACS molecular dynamics package and is about 8 times lighter than the LAMMPSTRJ format.
+<div align ="justify">
+<ol>
+  <li> reducing the total number of frames by reading the trajectory every N frames; </li>
+  <li> converting the trajectory to the .xtc format, a compressed format that is typically used by the GROMACS molecular dynamics package and is about 8 times lighter than the LAMMPSTRJ format.</li>
+</ol>
+</div>
 
-However, no tool currently available allows for the manipulation of _.lammptrj_ trajectories without the support of other software packages such as VMD and GROMACS. Indeed, the former reads this format, can also reduce the total number of frames; however, it saves trajectories in _.trr_ format. Finally, the conversion from _.trr_ to _.xtc_ is possible with GROMACS. It is clear that the entire process is easy but cumbersome, as it requires two softwares. 
+<p align="justify"> However, no tool currently available allows for the manipulation of <i>.lammptrj</i> trajectories without the support of other software packages such as VMD and GROMACS. Indeed, the former reads this format, can also reduce the total number of frames; however, it saves trajectories in <i>.trr</i> format. Finally, the conversion from <i>.trr</i> to <i>.xtc</i> is possible with GROMACS. It is clear that the entire process is easy but cumbersome, as it requires two softwares.</p>
 
+<b>trajectory-converter tool makes it easy to convert between trajectories and/or reduce the total number of frames in the trajectory.</b>
 
-**This tool makes it easy to convert between trajectories and/or reduce the total number of frames in the trajectory.**
+<p align="justify"> When used correctly, the program outputs the same trajectory in XTC format, regardless of the input format. The <i>.lammpstrj</i> format is one of the best choices for input trajectory because of its large size: indeed, the conversion in XTC format reduces noticeably its size. The XTC format has at least two advantages over other formats:</p>
 
-When used correctly, the program outputs the same trajectory in XTC format, regardless of the input format. The _.lammpstrj_ format is one of the best choices for input trajectory because of its large size: indeed, the conversion in XTC format reduces noticeably its size. The XTC format has at least two advantages over other formats:
-
-* It is easily read by VMD, Chimera, and other molecular visualization programs; 
-* The XTC format is compressed and lighter than any other existing trajectory format.
+<div align ="justify">
+<ul>
+  <li> It is easily read by VMD, Chimera, and other molecular visualization programs; </li>
+  <li> The XTC format is compressed and lighter than any other existing trajectory format. </li>
+</ul>
+</div>
 
 <br />
 
 # 2- Requirements
+<div align ="justify">
+<ul>  
+  <li> <b><code>Python3</code></b>: it is a powerful interpreted, object-oriented, and high-level programming language known for its dynamic semantics. It is highly recommended to use Python 3.7 or 3.9 as they are the most suitable versions. If you're working on a <i>Linux</i> or <i>macOS</i> system, Python 3 should already be installed. However, if you're using Windows, the presence of Python 3 is not guaranteed. To install Python 3, you can follow the installation guide provided <a href="https://docs.python-guide.org/starting/installation/">here</a>. Please ensure that you are working with Python 3 (preferably 3.7 or 3.9) as executing the code with Python 2 may result in errors or unexpected behavior. </li><br/>
 
-* **`Python3`**: it is an interpreted, object-oriented, high-level programming language with dynamic semantics. 
-  The installation guide is provided [Here](https://docs.python-guide.org/starting/installation/). 
-  If you are working on _Linux_ or _MacOs_ system, Python3 should be already installed. 
-  On the other hand, if you are using Windows operating system, it is not certain for its presence.
-  Please, be care of working with Python3 (3.7 or 3.9 is the best choice) as the code could return an error if using Python2.
-
-* **`MDAnalysis`**: It is an open source Python library that helps you to quickly write your own analysis algorithm for studying trajectories produced by the most popular simulation packages. To install the lastest stable release with conda do:
-
-   ```bash
-   conda config --add channels conda-forge
-   conda install mdanalysis
-   ```
+  <li> <a href="https://www.mdanalysis.org"> <b><code>MDAnalysis</code></b></a>: It is an open source Python library that helps to quickly write your own analysis algorithm for studying trajectories produced by the most popular simulation packages. To install the lastest stable release with conda do:
+     <pre><code>
+     conda config --add channels conda-forge
+     conda install mdanalysis
+     </code></pre>
+     On the other hand, to install the latest stable release with pip or pip3 (which should be available in all Python installations) do:
+     <pre><code>
+     pip3 install --upgrade MDAnalysis 
+     </code></pre>
+     Any other information can be found <a href="https://www.mdanalysis.org/pages/installation_quick_start/">here</a>.
+  </li>
+</ul>
+</div>
    
-   On the other hand, to install the latest stable release with pip or pip3 (which should be available in all Python installations) do:
-
-   ```bash
-   pip3 install --upgrade MDAnalysis
-   ```
-   
-   Any other information can be found [Here](https://www.mdanalysis.org/pages/installation_quick_start/).
-   
-<br />
-
+<br/>
+  
 # 3- Usage 
  
 The typical usage of the program consists in a call to _trajectory-conversion.py_ code by using Python3. 
