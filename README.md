@@ -34,7 +34,7 @@
 <ul>  
   <li> <b><code>Python3</code></b>: it is a powerful interpreted, object-oriented, and high-level programming language known for its dynamic semantics. It is highly recommended to use Python 3.7 or 3.9 as they are the most suitable versions. If you're working on a <i>Linux</i> or <i>macOS</i> system, Python 3 should already be installed. However, if you're using Windows, the presence of Python 3 is not guaranteed. To install Python 3, you can follow the installation guide provided <a href="https://docs.python-guide.org/starting/installation/">here</a>. Please ensure that you are working with Python 3 (preferably 3.7 or 3.9) as executing the code with Python 2 may result in errors or unexpected behavior. </li><br/>
 
-  <li> <a href="https://www.mdanalysis.org" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href); return false;"> <b><code>MDAnalysis</code></b></a>: It is an open source Python library that helps to quickly write your own analysis algorithm for studying trajectories produced by the most popular simulation packages. To install the lastest stable release with conda do:
+  <li> <a href="https://www.mdanalysis.org"><b><code>MDAnalysis</code></b></a>: It is an open source Python library that helps to quickly write your own analysis algorithm for studying trajectories produced by the most popular simulation packages. To install the lastest stable release with conda do:
      <pre><code>
      conda config --add channels conda-forge
      conda install mdanalysis
