@@ -83,7 +83,7 @@ python3 trajectory-conversion.py --ref <Coordinate FILE> --traj <Trajectory FILE
 
 # 4- Arguments 
 
-<p align="justify"> As shown in <a href="#3--usage"<b>Section 3</b></a> the coordinate/topology file of all-atom structure of the biomolecule (<i>gro, pdb, xyz</i>,...) and the trajectory file that requires a format conversion and/or reduction of frames, are always mandatory. Moreover, the string specifying which atoms of trajectory will be token in account (<i><code>SelectAtoms</code></i>), and the the number corresponding at how often the trajectory will be read (<i><code>Step</code></i>) are optional. A short explaination of the above mentioned files is the following: </p>
+<p align="justify"> As shown in <a href="#3--usage"><b>Section 3</b></a> the coordinate/topology file of all-atom structure of the biomolecule (<i>gro, pdb, xyz</i>,...) and the trajectory file that requires a format conversion and/or reduction of frames, are always mandatory. Moreover, the string specifying which atoms of trajectory will be token in account (<i><code>SelectAtoms</code></i>), and the the number corresponding at how often the trajectory will be read (<i><code>Step</code></i>) are optional. A short explaination of the above mentioned files is the following: </p>
 
 <div align ="justify">
 <ul>  
