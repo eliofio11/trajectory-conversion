@@ -9,8 +9,8 @@
 
 <div align ="justify">
 <ol>
-  <li> reducing the total number of frames by reading the trajectory every N frames; </li>
-  <li> converting the trajectory to the .xtc format, a compressed format that is typically used by the GROMACS molecular dynamics package and is about 8 times lighter than the LAMMPSTRJ format.</li>
+  <li> reducing the total number of frames by reading the trajectory every N frames; </li> 
+  <li> converting the trajectory to the .xtc format, a compressed format that is typically used by the GROMACS molecular dynamics package and is about 8 times lighter than the LAMMPSTRJ format.</li> 
 </ol>
 </div>
 
@@ -58,9 +58,9 @@
 
 <div align ="justify">
 <ul>  
-<li> </p> <i><code>SelectAtoms</code></i>: It is a string that specifies the atoms from the trajectory to be converted to <i>XTC</i>. The default value is <b>all</b>, which includes all atoms. Alternatively, you can specify <b>'name CA'</b> to only consider the Carbon alpha (C<sub>α</sub>) atoms. A complete list of possible strings can be found in the <a href="https://docs.mdanalysis.org/stable/documentation_pages/selections.html">MDAnalysis</a> documentation. </li>
+<li> </p> <i><code>SelectAtoms</code></i>: It is a string that specifies the atoms from the trajectory to be converted to <i>XTC</i>. The default value is <b>all</b>, which includes all atoms. Alternatively, you can specify <b>'name CA'</b> to only consider the Carbon alpha (C<sub>α</sub>) atoms. A complete list of possible strings can be found in the <a href="https://docs.mdanalysis.org/stable/documentation_pages/selections.html">MDAnalysis</a> documentation. </li> <br>
 
-<li> <i><code>Step</code></i>: It is an integer number. When set, the 'Step' option allows for reducing the total number of frames in the input trajectory. The default value is 1, which means <b>all</b> frames are read. However, if an integer number <i>X</i> between 1 and the total number of frames is provided, the input trajectory is read every <i>X</i> steps. </li>
+<li> <i><code>Step</code></i>: It is an integer number. When set, the 'Step' option allows for reducing the total number of frames in the input trajectory. The default value is 1, which means <b>all</b> frames are read. However, if an integer number <i>X</i> between 1 and the total number of frames is provided, the input trajectory is read every <i>X</i> steps. </li> <br>
 
 </ul>
 </div>
@@ -83,7 +83,7 @@ python3 trajectory-conversion.py --ref <Coordinate FILE> --traj <Trajectory FILE
 
 # 4- Arguments 
 
-<p align="justify"> As shown in **Section 3** the coordinate/topology file of all-atom structure of the biomolecule (<i>gro, pdb, xyz</i>,...) and the trajectory file that requires a format conversion and/or reduction of frames, are always mandatory. Moreover, the string specifying which atoms of trajectory will be token in account (<i><code>SelectAtoms</code></i>), and the the number corresponding at how often the trajectory will be read (<i><code>Step</code></i>) are optional. A short explaination of the above mentioned files is the following: </p>
+<p align="justify"> As shown in <a href="#3--usage"<b>Section 3</b></a> the coordinate/topology file of all-atom structure of the biomolecule (<i>gro, pdb, xyz</i>,...) and the trajectory file that requires a format conversion and/or reduction of frames, are always mandatory. Moreover, the string specifying which atoms of trajectory will be token in account (<i><code>SelectAtoms</code></i>), and the the number corresponding at how often the trajectory will be read (<i><code>Step</code></i>) are optional. A short explaination of the above mentioned files is the following: </p>
 
 <div align ="justify">
 <ul>  
@@ -100,7 +100,7 @@ python3 trajectory-conversion.py --ref <Coordinate FILE> --traj <Trajectory FILE
   </ul>
   <br> The complete list of possible string can be found in <a href="https://docs.mdanalysis.org/stable/documentation_pages/selections.html">MDAnalysis</a> </li> <br>
 
-  <li> <b><code> Step </code></b>: Optional integer number whose scope is to reduce the number of frames of input trajectory. The default value is <b>1</b>, that is all frames are read. On the other hand, if an integer number <i>X</i> between 1 and the total number of frames is set, than the trajectory is read every <i>X</i> frames.</li>
+  <li> <b><code> Step </code></b>: Optional integer number (<code>-s/--step</code>)whose scope is to reduce the number of frames of input trajectory. The default value is <b>1</b>, that is all frames are read. On the other hand, if an integer number <i>X</i> between 1 and the total number of frames is set, than the trajectory is read every <i>X</i> frames.</li>
 
 </ul>
 </div>
