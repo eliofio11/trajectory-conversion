@@ -51,24 +51,21 @@
 <br/>
   
 # 3- Usage 
- 
-The typical usage of the program consists in a call to _trajectory-conversion.py_ code by using Python3. 
-This code has the scope of converting a trajectory between any format to xtc one. In particular, it could be very useful 
-to transform _LAMMPSTRJ_ format to _XTC_ because the latter is about 8 times _slighter_ than the former. Moreover, 
-this code has a second purpose of reducing the number of frames of the input trajectory. 
 
-This script requires two mandatory files: the coordinates file or the topology of all-atom structure of the biomolecule (_`gro, pdb, xyz,...`_) and the trajectory file in any format (_`lammpstrj, dcd, trr, ...`_) On the other hand, two arguments are optional: 
+<p align="justify"> The typical usage of the program involves calling the <b>trajectory-converter.py</b> code using Python 3. This code is designed to convert a trajectory from any format to the <i>XTC</i> format. The conversion from <i>LAMMPSTRJ</i> to <i>XTC</i> is particularly useful as the <i>XTC</i> format is approximately 8 times <i>lighter</i> than LAMMPSTRJ. Additionally, the code also allows for reducing the number of frames in the input trajectory. 
 
-* _`SelectAtoms`_: it is a string that specifies the atoms of trajectory that will be converted from any format to xtc.
-                 the default value is 'all' that means **all** the atoms will be token in account. 
-                 Another choice could be `name CA` where only the C-alpha atoms will be considered.
-                 The complete list of possible string can be found in [MDAnalysis documentation](https://docs.mdanalysis.org/stable/documentation_pages/selections.html)
-                 
-* _`Step`_: It is an integer number. If set, 'Step' option allows to reduce the total number of frames of input trajectory.
-The dafult value is 1, that is **all** the frames are read. On the other hand, if an integer number _X_ between 1 and the total number of frames
-is set, the input trajectory is read every _X_ steps. 
+<p align="justify"> The script requires two mandatory files: the coordinates file or the topology of the all-atom structure of the biomolecule (<i>gro, pdb, xyz</i>, etc.), and the trajectory file in any format (<i>lammpstrj, dcd, trr</i>, etc.). There are also two optional arguments: </p>
 
-In order to launch the **trajectory-conversion.py** scripts, the command-line is the following:
+<div align ="justify">
+<ul>  
+<li> </p> <i><code>SelectAtoms</code></i>: It is a string that specifies the atoms from the trajectory to be converted to <i>XTC</i>. The default value is <b>all</b>, which includes all atoms. Alternatively, you can specify <b>'name CA'</b> to only consider the Carbon alpha (C<sub>α</sub>) atoms. A complete list of possible strings can be found in the <a href="https://docs.mdanalysis.org/stable/documentation_pages/selections.html">MDAnalysis</a> documentation. </li>
+
+<li> <i><code>Step</code></i>: It is an integer number. When set, the 'Step' option allows for reducing the total number of frames in the input trajectory. The default value is 1, which means <b>all</b> frames are read. However, if an integer number <i>X</i> between 1 and the total number of frames is provided, the input trajectory is read every <i>X</i> steps. </li>
+
+</ul>
+</div>
+
+<div align ="justify"> In order to launch the <b>trajectory-converter.py**</b> scripts, the command-line is the following: </p>
 
 ```sh
 python3 trajectory-conversion.py -r <Coordinate FILE> -t <Trajectory FILE> [-a <SelectAtoms>] [-s <step>] 
@@ -78,36 +75,41 @@ python3 trajectory-conversion.py -r <Coordinate FILE> -t <Trajectory FILE> [-a <
 python3 trajectory-conversion.py --ref <Coordinate FILE> --traj <Trajectory FILE> [--atoms <SelectAtoms>] [--step <step>] 
 ```
 
-The output of the program is the new trajectory in format xtc (and with a reduces number of frames if -s/--step [INT] is set). For further information, please type on terminal `python3 trajectory-conversion.py` or `python3 trajectory-conversion.py -h`. 
+<p align="justify"> The output of the program is the new trajectory in format xtc (and with a reduces number of frames if <code>-s/--step [INT]</code> is set). For further information, please type on terminal <code>python3 trajectory-conversion.py</code> or <code>python3 trajectory-conversion.py -h</code>. </p>
 
-Before running the python scripts, read carefully the next section that provides a detailed explaination of each argument.
+<p align="justify"> Before running the python scripts, read carefully the next section that provides a detailed explaination of each argument.</p>
 
 <br />
 
 # 4- Arguments 
 
-As shown in **Sec. 3** the coordinate/topology file of all-atom structure of the biomolecule (_`gro, pdb, xyz,...`_) and the trajectory file that requires a format conversion and/or reduction of frames, are always mandatory. Moreover, the string specifying which atoms of trajectory will be token in account (_`SelectAtoms`_), and the the number corresponding at how often the trajectory will be read (_`Step`_) are optional. A short explaination of the above mentioned files is the following:
+<p align="justify"> As shown in **Section 3** the coordinate/topology file of all-atom structure of the biomolecule (<i>gro, pdb, xyz</i>,...) and the trajectory file that requires a format conversion and/or reduction of frames, are always mandatory. Moreover, the string specifying which atoms of trajectory will be token in account (<i><code>SelectAtoms</code></i>), and the the number corresponding at how often the trajectory will be read (<i><code>Step</code></i>) are optional. A short explaination of the above mentioned files is the following: </p>
 
-* **`Coordinate FILE`**: Mandatory File of atom Coordinates (xyz, gro, pdb, psf, ..., formats are accepted). 
+<div align ="justify">
+<ul>  
+  <li> <b><code>Coordinate FILE</code></b>: Mandatory File (<code>-r/--ref</code>) containing the atom coordinates of the biomolecule (<i>xyz, gro, pdb, psf</i>, ..., formats are accepted). </li> <br>
 
-* **`Trajectory FILE`**: Mandatory File containing the trajectory of the biomolecule (trr, dcd, lammpstrj,..., formats are accepted.)
+  <li> <b><code>Trajectory FILE</code></b>: Mandatory File (<code>-t/--traj</code>) containing the trajectory of the biomolecule containing the atom coordinates of the biomolecule (<i>trr, dcd, lammpstrj</i>,..., formats are accepted.) </li> <br>
 
-* **`SelectAtoms`**: Optional string that specifies the atoms of trajectory that will be converted from any format to xtc. The default value is 'all' [-a/--atoms all] that means that all the atoms will be token in account. Another choice could be -a 'name CA' where only the C-alpha atoms will be considered. Be careful, because if the string is made up of more than one word separated by spaces the latter must be written between apex. 
-Example: 
-  * -a name CA   --> IT DOES NOT WORK (*name CA* has two words: it requires apex)
-  * -a 'name CA' --> IT WORKS
-  * -a 'all'     --> IT WORKS
-  * -a all       --> IT WORKS (*all* has one word: not require apex)
-The complete list of possible string can be found in [MDAnalysis documentation](https://docs.mdanalysis.org/stable/documentation_pages/selections.html)
+  <li> <b><code>SelectAtoms</code></b>: Optional string (<code>-a/--atoms</code>) that specifies the atoms of trajectory that will be converted from any format to xtc. The default value is <b>'all'</b> (<b>-a/--atoms all</b>) that means that all the atoms will be token in account. Another choice could be <b>-a 'name CA'</b> where only the C-alpha atoms will be considered. <b>Be careful, because if the string is made up of more than one word separated by spaces the latter must be written between apex. </b> For instance: 
+  <ul>
+   <br> <li> <code> -a name CA   </code>   -->  IT DOES NOT WORK (<b>name CA</b> has two words: it requires apex) </li>
+    <li> <code> -a 'name CA' </code> --> IT WORKS </li>
+    <li> <code> -a 'all'     </code>     --> IT WORKS </li>
+    <li> <code> -a all       </code>       --> IT WORKS (<b>all</b> has one word: not require apex) </li>
+  </ul>
+  <br> The complete list of possible string can be found in <a href="https://docs.mdanalysis.org/stable/documentation_pages/selections.html">MDAnalysis</a> </li> <br>
 
-* **`Step`**: Optional integer number whose scope is to reduce the number of frames of input trajectory. The default value is **1**, that is all frames are read. On the other hand, if an integer number _X_ between 1 and the total number of frames is set, than the trajectory is read every _X_ frames.
+  <li> <b><code> Step </code></b>: Optional integer number whose scope is to reduce the number of frames of input trajectory. The default value is <b>1</b>, that is all frames are read. On the other hand, if an integer number <i>X</i> between 1 and the total number of frames is set, than the trajectory is read every <i>X</i> frames.</li>
 
+</ul>
+</div>
 
 <br />
 
 # 5- Examples 
 
-Hereafter, for the sake of clarity, six examples are reported. Read them carefully. 
+<p align="justify"> Hereafter, for the sake of clarity, six examples are reported. Read them carefully </p> 
 
 ```perl
 # *Example 1* : Transforming lammpstrj trajectory in xtc (all frames and all atoms are read)
@@ -186,5 +188,5 @@ python3 trajectory-conversion.py -r protein.gro -t protein.xtc -s 50
 
 # 6 - Contacts 
 
-Raffaele (Elio) Fiorentini: elio.fiorentini90@gmail.it
+Raffaele (Elio) Fiorentini: raffaele.fiorentini@unitn.it or elio.fiorentini90@gmail.com
 
