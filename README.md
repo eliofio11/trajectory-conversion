@@ -120,7 +120,7 @@ python3 trajectory-conversion.py --ref <Coordinate FILE> --traj <Trajectory FILE
 #             o atoms selected    =  all (default value, thus it does not require -a/--atoms <STR> flag) 
 #             o output_trajectory =  Trajectory.xtc   
 
-python3 trajectory-conversion.py -r protein.gro -t protein.lammpstrj 
+python3 trajectory-converter.py -r protein.gro -t protein.lammpstrj 
 ```
   
 ```perl
@@ -132,7 +132,7 @@ python3 trajectory-conversion.py -r protein.gro -t protein.lammpstrj
 #             o atoms selected    =  all (default value, thus it does not require -a/--atoms <STR> flag) 
 #             o output_trajectory =  Trajectory.xtc   
 
-python3 trajectory-conversion.py -r protein.pdb -t protein.dcd
+python3 trajectory-converter.py -r protein.pdb -t protein.dcd
 ```
   
 ```perl
@@ -144,7 +144,7 @@ python3 trajectory-conversion.py -r protein.pdb -t protein.dcd
 #             o atoms selected    =  only C-alpha atoms and hydrogens (it requires -a/--atoms 'name CA and type H' flag) 
 #             o output_trajectory =  Trajectory.xtc   
 
-python3 trajectory-conversion.py -r protein.gro -t protein.lammpstrj -a 'name CA and type H'
+python3 trajectory-converter.py -r protein.gro -t protein.lammpstrj -a 'name CA and type H'
 ```
 
   
@@ -157,7 +157,7 @@ python3 trajectory-conversion.py -r protein.gro -t protein.lammpstrj -a 'name CA
 #             o  atoms selected   =  all (default value, thus it does not requires -a/--atoms <STR> flag) 
 #             o output_trajectory =  Trajectory.xtc   
 
-python3 trajectory-conversion.py -r protein.gro -t protein.lammpstrj -s 10 
+python3 trajectory-converter.py -r protein.gro -t protein.lammpstrj -s 10 
 ```
   
 ```perl
@@ -169,7 +169,7 @@ python3 trajectory-conversion.py -r protein.gro -t protein.lammpstrj -s 10
 #             o atoms selected    =  only hydrogens (thus it requires -a/--atoms 'type H' flag) 
 #             o output_trajectory =  Trajectory.xtc   
 
-python3 trajectory-conversion.py -r protein.gro -t protein.lammpstrj -s 10 -a 'type H' 
+python3 trajectory-converter.py -r protein.gro -t protein.lammpstrj -s 10 -a 'type H' 
 ```
   
 ```perl
@@ -181,7 +181,7 @@ python3 trajectory-conversion.py -r protein.gro -t protein.lammpstrj -s 10 -a 't
 #             o atoms selected    =  all (default value, thus it does not requires -a/--atoms <STR> flag)
 #             o output_trajectory =  Trajectory.xtc   
 
-python3 trajectory-conversion.py -r protein.gro -t protein.xtc -s 50 
+python3 trajectory-converter.py -r protein.gro -t protein.xtc -s 50 
 ```
 
 <br />
